@@ -14,7 +14,7 @@ internal class Menu : MenuComponent
     public void Accept(Visitor visitor)
     {
         List<MenuComponent> components = new List<MenuComponent>();
-        MenuComponent root = _root;
+        MenuComponent root = _root; //надо чтобы первый корень дерева был сам экземпляр menu
 
         while (root != null || components.Count > 0)
         {
@@ -34,19 +34,19 @@ internal class Menu : MenuComponent
         
     }
     
-    public void Add(MenuComponent component)
+    public override void Add(MenuComponent component)
     {
         ArgumentNullException.ThrowIfNull(component);
         _menuComponents.Add(component);
     }
  
-    public void Remove(MenuComponent component)
+    public override void Remove(MenuComponent component)
     {
         ArgumentNullException.ThrowIfNull(component);
         _menuComponents.Remove(component);
     }
     
-    public void Print()
+    public override void Print()
     {
         Console.WriteLine(_name);
         //nwolc
