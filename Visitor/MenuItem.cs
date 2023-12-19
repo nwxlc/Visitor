@@ -25,4 +25,9 @@ internal class MenuItem : MenuComponent
     {
         throw new Exception("Блюдо нельзя удалить");
     }
+    
+    public override void Accept(Visitor visitor)
+    {
+        visitor.Visit(this);
+    }
 }

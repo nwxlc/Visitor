@@ -2,7 +2,6 @@ namespace Visitor;
 
 internal class MenuSection : MenuComponent
 {
-    private List<MenuComponent> _menuComponents = new List<MenuComponent>();
     
     public MenuSection(string name)
         :base(name)
@@ -28,5 +27,10 @@ internal class MenuSection : MenuComponent
         {
             component.Print();
         }
+    }
+    
+    public override void Accept(Visitor visitor)
+    {
+        visitor.Visit(this);
     }
 }

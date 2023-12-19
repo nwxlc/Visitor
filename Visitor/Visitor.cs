@@ -1,13 +1,6 @@
 namespace Visitor;
 
-internal abstract class Visitor
+internal interface Visitor
 {
-    protected int count;
-    
-    public abstract void Visit(MenuComponent menuComponent);
-
-    public int GetCount()
-    {
-        return count;
-    }
+    public void Visit(MenuComponent menuComponent);
 }
