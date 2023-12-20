@@ -2,7 +2,6 @@ namespace Visitor;
 
 internal class MenuSection : MenuComponent
 {
-    
     public MenuSection(string name)
         :base(name)
     {}

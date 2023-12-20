@@ -11,29 +11,14 @@ internal class Menu : MenuComponent
         _name = name;
     }
 
-    public void Accept(Visitor visitor)
+    public override void Accept(Visitor visitor)
     {
-        List<MenuComponent> components = new List<MenuComponent>();
-        MenuComponent root = _root; //надо чтобы первый корень дерева был сам экземпляр menu
-
-        while (root != null || components.Count > 0)
+        foreach (var component in  _menuComponents)
         {
-            while (root != null)
-            {
-                components.Add(root);
-                root = root.IsNext() ? root.Next() : null;
-            }
-
-            int lastIndex = components.Count - 1;
-            root = components[lastIndex];
-            components.RemoveAt(lastIndex);
-
-            root.Accept(visitor);
-            root = root.IsNext() ? root.Next() : null;
+            component.Accept(visitor);
         }
-        
     }
-    
+
     public override void Add(MenuComponent component)
     {
         ArgumentNullException.ThrowIfNull(component);

@@ -20,8 +20,12 @@ menu.Add(meatSection);
 menu.Add(soupsSection);
 menu.Add(dessertsSection);
 
+menu.Print();
+
 CountVeganVisitor countVeganVisitor = new CountVeganVisitor();
-menu.Accept(countVeganVisitor);
+
+var objectStructure = new ObjectStructure(menu);
+objectStructure.Accept(countVeganVisitor);
 
 Console.WriteLine($"Число блюд для травоядных: {countVeganVisitor.GetCount()}");
 

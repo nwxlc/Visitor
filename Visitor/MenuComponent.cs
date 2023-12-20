@@ -11,18 +11,9 @@ internal abstract class MenuComponent
         this.name = name;
     }
 
-    public virtual void Accept(Visitor visitor)
-    {
-        visitor.Visit(this);
-    }
-
-    public virtual void Add(MenuComponent component)
-    {
-    }
-
-    public virtual void Remove(MenuComponent component)
-    {
-    }
+    public abstract void Accept(Visitor visitor);
+    public abstract void Add(MenuComponent component);
+    public abstract void Remove(MenuComponent component);
 
     public virtual void Print()
     {
