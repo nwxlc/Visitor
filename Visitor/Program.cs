@@ -23,9 +23,9 @@ menu.Add(dessertsSection);
 menu.Print();
 
 CountVeganVisitor countVeganVisitor = new CountVeganVisitor();
-
 var objectStructure = new ObjectStructure(menu);
 objectStructure.Accept(countVeganVisitor);
+Console.WriteLine(countVeganVisitor.GetCount());
 
 Console.WriteLine($"Число блюд для травоядных: {countVeganVisitor.GetCount()}");
 

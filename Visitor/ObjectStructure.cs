@@ -13,22 +13,25 @@ internal class ObjectStructure
     public void Accept(Visitor visitor)
     {
         List<MenuComponent> components = new List<MenuComponent>();
-        MenuComponent root = _root;
+        MenuComponent? root = _root;
 
-        while (root != null || components.Count > 0)
+        while (root?.IsNext() ?? false)
         {
-            while (root != null)
-            {
-                components.Add(root);
-                root = root.IsNext() ? root.Next() : null;
-            }
-
-            int lastIndex = components.Count - 1;
-            root = components[lastIndex];
-            components.RemoveAt(lastIndex);
-
-            root.Accept(visitor);
-            root = root.IsNext() ? root.Next() : null;
+            var menuComponent = root.Next();
+            visitor.Visit(menuComponent);
+            //
+            // while (root != null)
+            // {
+            //     components.Add(root);
+            //     root = root.IsNext() ? root.Next() : null;
+            // }
+            //
+            // int lastIndex = components.Count - 1;
+            // root = components[lastIndex];
+            // components.RemoveAt(lastIndex);
+            //
+            // root.Accept(visitor);
+            // root = root.IsNext() ? root.Next() : null;
         }
     }
 }
